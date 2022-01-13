@@ -2,22 +2,21 @@ package com.bridgelabz.employeewage;
 
 public class EmployeeWageProgram {
 
-    public static final int IS_PART_TIME = 1;
-    public static final int IS_FULL_TIME = 2;
-    public static final int EMP_RATE_PER_HOUR = 20;
-    public static final int NUM_WORKING_DAY = 2;
+    public static final int IS_FULL_TIME =2;
+    public static final int IS_PART_TIME =1;
+    public static final int EMP_RATE_PER_HOUR =20;
+    public static final int NUM_OF_WORKING_DAYS =2;
+    public static final int MAX_HOUR_IN_MONTH =10;
 
-    public static int calculateEmpWageMonth() {
-
-        int empWage = 0;
-        int empHrs = 0;
-        int totalEmpWage = 0;
-        for (int day = 1; day < NUM_WORKING_DAY; day++) {
-
+        public static int calWagesTotalWorkingDays(){
+        int empHrs=0;
+        int totalEmpHrs=0;
+        int totalWorkingDays =0;
+        while (totalEmpHrs <= MAX_HOUR_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS ) {
+            totalWorkingDays++;
 
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
-
                 case IS_PART_TIME:
                     empHrs = 4;
                     break;
@@ -26,27 +25,20 @@ public class EmployeeWageProgram {
                     break;
                 default:
                     empHrs = 0;
-
             }
 
-            empWage = empHrs * EMP_RATE_PER_HOUR;
-            System.out.println("EmployeeWage:" + empWage);
-        }
-        totalEmpWage += empWage;
-        System.out.println("Total EmpWage:"+ totalEmpWage);
-        return totalEmpWage;
 
-}
+            totalEmpHrs = empHrs;
+            System.out.println("Days# :" + totalWorkingDays + "  Emp Hr" +empHrs);
+        }
+        int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+        System.out.println("Total emp wage:" + totalEmpWage);
+        return totalEmpWage;
+    }
 
     public static void main(String[] args) {
-        calculateEmpWageMonth();
+            calWagesTotalWorkingDays();
 
     }
+
 }
-
-
-
-
-
-
-
